@@ -1,0 +1,47 @@
+{% extends 'base.twig' %}
+
+{% import 'form.twig' as form %}
+
+{% block title %}Modifier Ce Restaurant{% endblock %}
+
+{% block body %}
+
+<br \>
+    <header class="page-header"><meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+        <h1 class="h3 mb-4 text-gray-800">Modifier Ce Restaurant</h1>
+    </header>
+    <div class="row">
+        <div class="col-md-12">
+        <br \ ><br \>
+            <form id="form1" name="form1" method="post" action="{{ actionEdit }}">
+                <div class="row">
+                    <div class="col-md-12">
+					{% for restaurant in restaurants %}
+                        
+                        {{ form.inputRequired('f_nom', 'Nom de Restaurant', restaurant.nom) }}
+
+                        {{ form.inputRequired('f_image', 'Image de Restaurant', restaurant.image) }}
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form.textareaRequired('f_description', 'Decription', restaurant.description) }}
+                            <div>
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div align="right">
+                    <a class="btn btn-secondary" href="restaurants.php?page=restaurants.twig">Annuler</a>
+                    <button type="submit" class="btn btn-success">Valider</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br \><br \>
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'f_description' );
+    </script>
+{% endblock %}

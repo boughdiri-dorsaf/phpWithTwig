@@ -1,0 +1,65 @@
+
+{% extends 'base.twig' %}
+
+{% block title %}Liste des Demandes de Contacts{% endblock %}
+
+{% block body %}
+
+	<div class="row">
+	    <section class="col-md-12 table-responsive">
+	    	<header class="page-header">
+		    	<h1 class="h3 mb-4 text-gray-800">Liste des Demandes de Contacts</h1>
+		    </header>
+			<div class="row">
+				<div class="col-md-12">
+					<br \><br \>
+					<table class="table table-bordered table-striped table-condensed">
+						<thead>
+						<tr>
+							<th>N°</th>
+							<th>Nom</th>
+							<th>Mail</th>
+                            <th>Téléphone</th>
+                            <th>Date</th>
+                            <th>Sujet</th>
+                            <th>Message</th>
+							
+						</tr>
+						</thead>
+						<tbody>
+						{% for contact in contacts %}
+							<tr>
+								<td class="text-black">{{ contact.id }}</td>
+								<td class="text-black">{{ contact.nom }}</td>
+                                <td class="text-black">{{ contact.mail }}</td>
+                                <td class="text-black">{{ contact.tel }}</td>
+                                <td class="text-black">{{ contact.date }}</td>
+                                <td class="text-black">{{ contact.sujet }}</td>
+                                <td class="text-black">{{ contact.message }}</td>
+							</tr> 
+							<div class="modal fade" id="confirm-delete{{ contact.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											Confirmation de suppresion
+										</div>
+										<div class="modal-body">
+											Êtes-vous sûr de vouloir supprimer ce circuit ?
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+											<a class="btn btn-danger btn-ok" href="deleteRoom.php?id={{ room.id }}">Supprimer</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+	    </section>
+	</div>
+
+	
+{% endblock %}

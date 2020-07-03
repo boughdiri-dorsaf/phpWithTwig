@@ -1,0 +1,48 @@
+
+{% extends 'base.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+	<div class="row">
+	    <section class="col-md-12 table-responsive">
+	    	<header class="page-header">
+		        <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
+		    </header>
+            <td class="text-black"><a class="btn btn-success" href="index.php?page=addDashboard.twig">Ajouter</a></td>			<div class="row">
+				<div class="col-md-12">
+					<br \><br \>
+					<table class="table table-bordered table-striped table-condensed">
+						<thead>
+						<tr>
+							<th>Description</th>
+							<th>Image</th>
+                            <th>Image Carousel 1</th>
+							<th>Image Carousel 2</th>
+							<th>Image Carousel 3</th>
+                            <th>Image Carousel 4</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for hotel in hotel %}
+							<tr>
+								<td class="text-black">{{ hotel.description }}</td>
+								<td class="text-black"><img src="../assets/img/{{ hotel.img_descr }}" width="250px" height="200px" /> </td>
+								<td class="text-black"><img src="../assets/img/{{ hotel.carousel1 }}" width="250px" height="200px" /> </td>
+                                <td class="text-black"><img src="../assets/img/{{ hotel.carousel2 }}" width="250px" height="200px" /> </td>
+                                <td class="text-black"><img src="../assets/img/{{ hotel.carousel3 }}" width="250px" height="200px" /> </td>
+                                <td class="text-black"><img src="../assets/img/{{ hotel.carousel4 }}" width="250px" height="200px" /> </td>
+								<td class="text-black"><a class="btn btn-success" href="index.php?page=editDashboard.twig">Editer</a></td>
+							</tr> 
+							
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+	    </section>
+	</div>
+
+	
+{% endblock %}
